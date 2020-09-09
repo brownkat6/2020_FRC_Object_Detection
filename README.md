@@ -1,8 +1,8 @@
 # 2020_FRC_Object_Detection
-This repository is provides a pre-trained, ready to go object detection vision model for the 2020 FRC FIRST Robotics season. The model outputs the location of Power Cells and Upper Power Ports given a camera input stream. FRC began the process of providing object detection capabilities in the 2019-2020 season, as shown here. https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/index.html Unfortunately, the platform they used to train the model, AWS, has permissions issues that as of September 2020 remain unresolved. Thus, this repository provides a tutorial for using Google Cloud to train an object detection model. However, it will reference several of the steps outlined by FIRST(to get the original dataset, and to provide the inference.py script that is used to run the trained model on the RoboRio), and for those I take no credit.
+This repository is provides a pre-trained, ready to go object detection vision model for the 2020 FRC FIRST Robotics season. The model outputs the location of Power Cells and Upper Power Ports given a camera input stream. FRC began the process of providing object detection capabilities in the 2019-2020 season, as shown here. https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/index.html Unfortunately, the platform they used to train the model, AWS, has permissions issues that as of September 2020 remain unresolved. Thus, this repository uses Google Cloud to train an object detection model. However, it will reference several of the steps outlined by FIRST(to get the original dataset, and to provide the inference.py script that is used to run the trained model on the RoboRio), and for those I take no credit.
 
-If you simply want to get a pre-trained model that will output the location of Power Cells and Upper Power Ports, scroll below to the section "Run in FRC"
-If you want to retrain the model using a new/updated dataset, follow the steps in "Get New Labeled Data".
+If you simply want to get a pre-trained model that will output the location of Power Cells and Upper Power Ports, skip to "Run in FRC"
+If you want to retrain the model using a new/updated dataset, follow the steps starting in "Get New Labeled Data".
 
 Get New Labeled Data  
   1) https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
@@ -93,4 +93,4 @@ Train Model Using Google Cloud
 
 Run in FRC  
   https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/inference.html
-  Follow the instructions in this page using the model.tar.gz file you previously created. The python script inference.py that you will need to upload the model can be found in this repository.
+  Follow the instructions in this page using the model.tar.gz file. The python script inference.py that you will need to upload the model can be found in this repository.
