@@ -66,3 +66,8 @@ Run in FRC
   https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/inference.html
   Follow the instructions in this page using the model.tar.gz file you previously created. The python script inference.py that you will need to upload the model can be found in this repository.
   
+Create map.pbtxt
+  You will need to generate a map.pbtxt file if you have changed the number or label of objects your dataset identifies.
+  Open a command line. Navigate to this repository. Replace Object1_Name etc. with the labels of your objects. Ex. Power_Cell
+  $ python generate_pbtxt.py --classes Object1_Name Object2_Name ObjectN_Name --current_dir path/to/current/directory
+  This will create map.pbtxt in the current directory.
