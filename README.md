@@ -30,7 +30,7 @@ Get New Labeled Data
   This will create map.pbtxt in the current directory.
   7) You are now ready to "Train Model Using Google Cloud"
 
-Train Model Using Google Cloud \n
+Train Model Using Google Cloud  
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.  
 2) Create a new "Project"  
 3) Setup your project  
