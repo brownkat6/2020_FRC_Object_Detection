@@ -1,13 +1,15 @@
 # 2020_FRC_Object_Detection
-If you simply want to run a trained model that will output the location of objects and goals, scroll below to the section "Run in FRC"
-If you want to retrain the model using a new/updated dataset, follow the below steps.
+This repository is dedicated to providing a trained, ready to use object detection vision model for the 2020 FRC FIRST Robotics season. FRC began the process of providing object detection capabilities in the 2019-2020 season, as show here. https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/index.html Unfortunately, the platform they used to train the model, AWS, has permissions issues that as of September 2020 remain unresolved. Thus, this repository provides a tutorial for using Google Cloud to train an object detection model. However, it will reference several of the steps outlined by FIRST(to get the original dataset, and to provide the inference.py script that is used to run the trained model on the RoboRio), and for those I take no credit.
+
+If you simply want to get a pre-trained model that will output the location of Power Cells and Upper Power Ports, scroll below to the section "Run in FRC"
+If you want to retrain the model using a new/updated dataset, follow the steps in "Get New Labeled Data".
 
 Get New Labeled Data
-  https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
-  Follow the instructions here. However, our team has labeled several hundred additonal images, so instead of using the Supervisely link provided by WPILib, use this link https://app.supervise.ly/share-links/vlZ5F1mj5N6qxB1Ud6KsI1N7QEJr5OPZ3LYkNyFdh946ZEHihPPWwP1VaYP6Ncwq to clone the dataset.
-  Label additional data using Supervisely.
-  Download Raw Data as .json + images
-  Move data into the input folder of this repository
+  1) https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
+  Follow the instructions here. However, our team has labeled several hundred additonal images, so instead of using the Supervisely link provided by WPILib, use this link https://app.supervise.ly/share-links/vlZ5F1mj5N6qxB1Ud6KsI1N7QEJr5OPZ3LYkNyFdh946ZEHihPPWwP1VaYP6Ncwq when cloning the dataset.
+  2) Label additional data using Supervisely.
+  3) Download Raw Data as .json + images
+  4) Move data into the input folder of this repository
   Directory structure
   -2020_FRC_Object_Detection
     -input
@@ -16,10 +18,17 @@ Get New Labeled Data
         -Filming Day 1 Video
         -Filming Day 2 Video
       -all_images
-Format New Labeled Data
-  $ python generate_gcloud_labels.py --bucket_name data_bucket_name --current_dir path/to/repository/
-  This will create a bucket_name_labels.csv file that you can upload to Google Cloud. These are your labels to tell the model where each object is in the image.
-  This will move all of your images into the all_images folder. You may upload all of the images in this folder to your data bucket in Google Cloud.
+  5) Format New Labeled Data
+    $ python generate_gcloud_labels.py --bucket_name data_bucket_name --current_dir path/to/repository/
+    This will create a bucket_name_labels.csv file that you can upload to Google Cloud. These are your labels to tell the model where each object is in the image.
+    This will move all of your images into the all_images folder. You may upload all of the images in this folder to your data bucket in Google Cloud.
+  6) Create map.pbtxt
+    This file contains the labels for each object you are identifying.
+    You will need to generate a map.pbtxt file if your dataset contains new types of labeled objects(e.g. it also identifies the Lower Power Port).
+    Open a command line. Navigate to this repository. Replace Object1_Name etc. with the labels of your objects. Ex. Power_Cell
+    $ python generate_pbtxt.py --classes Object1_Name Object2_Name ObjectN_Name --current_dir path/to/current/directory
+  This will create map.pbtxt in the current directory.
+  7) You are now ready to "Train Model Using Google Cloud"
 
 Train Model Using Google Cloud
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.
@@ -79,15 +88,9 @@ Train Model Using Google Cloud
   Open a command line. Navigate to the directory containing the frc_model folder
   $ tar -zcvf model.tar.gz frc_model
   This will create a .tar.gz file containing your trained, optimized model, and the labels file.
-  
+  Almost There! You are now ready to move to the section "Run in FRC"
 
 
 Run in FRC
   https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/inference.html
   Follow the instructions in this page using the model.tar.gz file you previously created. The python script inference.py that you will need to upload the model can be found in this repository.
-  
-Create map.pbtxt
-  You will need to generate a map.pbtxt file if you have changed the number or label of objects your dataset identifies.
-  Open a command line. Navigate to this repository. Replace Object1_Name etc. with the labels of your objects. Ex. Power_Cell
-  $ python generate_pbtxt.py --classes Object1_Name Object2_Name ObjectN_Name --current_dir path/to/current/directory
-  This will create map.pbtxt in the current directory.
