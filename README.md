@@ -7,9 +7,9 @@ If you want to retrain the model using a new/updated dataset, follow the steps i
 Get New Labeled Data  
   1) https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
   Follow the instructions here. However, our team has labeled several hundred additonal images, so instead of using the Supervisely link provided by WPILib, use this link https://app.supervise.ly/share-links/vlZ5F1mj5N6qxB1Ud6KsI1N7QEJr5OPZ3LYkNyFdh946ZEHihPPWwP1VaYP6Ncwq when cloning the dataset.
-  2) Label additional data using Supervisely.
-  3) Download Raw Data as .json + images
-  4) Move data into the input folder of this repository
+  2) Label additional data using Supervisely.  
+  3) Download Raw Data as .json + images  
+  4) Move data into the input folder of this repository  
   Directory structure
   -2020_FRC_Object_Detection
     -input
@@ -18,11 +18,11 @@ Get New Labeled Data
         -Filming Day 1 Video
         -Filming Day 2 Video
       -all_images
-  5) Format New Labeled Data
+  5) Format New Labeled Data  
     $ python generate_gcloud_labels.py --bucket_name data_bucket_name --current_dir path/to/repository/
     This will create a bucket_name_labels.csv file that you can upload to Google Cloud. These are your labels to tell the model where each object is in the image.
     This will move all of your images into the all_images folder. You may upload all of the images in this folder to your data bucket in Google Cloud.
-  6) Create map.pbtxt
+  6) Create map.pbtxt  
     This file contains the labels for each object you are identifying.
     You will need to generate a map.pbtxt file if your dataset contains new types of labeled objects(e.g. it also identifies the Lower Power Port).
     Open a command line. Navigate to this repository. Replace Object1_Name etc. with the labels of your objects. Ex. Power_Cell
@@ -31,14 +31,14 @@ Get New Labeled Data
   7) You are now ready to "Train Model Using Google Cloud"
 
 Train Model Using Google Cloud \n
-1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.
-2) Create a new "Project"
-3) Setup your project
+1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.  
+2) Create a new "Project"  
+3) Setup your project  
   Type "Models" in the search bar.
   Click Models (Vision), and "ENABLE AUTOML AI"
   Click the "New Dataset" button.
   Select the Object Detection model, click "Create Dataset".
-4) Upload Images
+4) Upload Images  
   Click "Select Files" and upload the dataset(all images) from your computer.
   You will need to specify the "Destination on Cloud Storage"
   Click the icon with the + sign to create a new bucket.
@@ -46,14 +46,14 @@ Train Model Using Google Cloud \n
   Create the bucket.
   Select the bucket.
   Click "Continue" on the main page.
-5) Upload Labels for your Images
+5) Upload Labels for your Images  
   Go to https://console.cloud.google.com/storage/browser
   Upload the CSV labels file to the bucket you just created.
   Return to the original page containing your Project Dataset.
   Click "Select a CSV file on Cloud Storage"
   Click the bucket you already created.
   Find and select the labels file you uploaded to your bucket.
-6) Start Training
+6) Start Training  
   Switch to the "Images" tab to ensure that all of your labels and images uploaded correctly.
   Switch to the "Train" tab
   "Train New Model"
@@ -61,13 +61,13 @@ Train Model Using Google Cloud \n
   Optimize your model for "Faster predictions"
   Set the recommended 24 hour node budget.
   Start Training
-7) Evaluate
+7) Evaluate  
   After about 8 hours, your model will finish training. At this point, switch to the "Evaluate" tab. Here you can see how well your model does, looking at images of correctly or incorrectly classified models, or examining Precision and Recall.
   Once you have finished evaluating the model, switch to the "Test & Use" tab.
   Choose to export the model as a "TF Lite" model.
   Choose which bucket to export the model to. I recommend creating a new bucket named "frc_models" and uploading the trained model there. Then, return to the page that contains
   all of your buckets (https://console.cloud.google.com/storage/browser), navigate to the "frc_models" bucket and find the "model.tflite" file that is nested within several    folders. Download this model to your local machine.
-8) File format conversions
+8) File format conversions  
   Unfortunately, you cannot immediately run this trained model in FRC, as it is unoptimized and would be extremely slow. 
   Open a command line.
   Linux Users
