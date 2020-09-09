@@ -1,6 +1,26 @@
 # 2020_FRC_Object_Detection
 If you simply want to run a trained model that will output the location of objects and goals, scroll below to the section "Run in FRC"
 If you want to retrain the model using a new/updated dataset, follow the below steps.
+
+Get New Labeled Data
+  https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
+  Follow the instructions here. However, our team has labeled several hundred additonal images, so instead of using the Supervisely link provided by WPILib, use this link https://app.supervise.ly/share-links/vlZ5F1mj5N6qxB1Ud6KsI1N7QEJr5OPZ3LYkNyFdh946ZEHihPPWwP1VaYP6Ncwq to clone the dataset.
+  Label additional data using Supervisely.
+  Download Raw Data as .json + images
+  Move data into the input folder of this repository
+  Directory structure
+  -2020_FRC_Object_Detection
+    -input
+      -Raw Data
+        -Filming Day 1 Images
+        -Filming Day 1 Video
+        -Filming Day 2 Video
+      -all_images
+Format New Labeled Data
+  $ python generate_gcloud_labels.py --bucket_name data_bucket_name --current_dir path/to/repository/
+  This will create a bucket_name_labels.csv file that you can upload to Google Cloud. These are your labels to tell the model where each object is in the image.
+  This will move all of your images into the all_images folder. You may upload all of the images in this folder to your data bucket in Google Cloud.
+
 Train Model Using Google Cloud
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.
 2) Create a new "Project"
