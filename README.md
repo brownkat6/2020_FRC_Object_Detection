@@ -32,17 +32,22 @@ Get New Labeled Data
 
 Train Model Using Google Cloud  
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.  
-!["Free Trial Activation"](/images_readme/Rob1.PNG?raw=true "Free Trial Activation")
+!["Free Trial Activation"](/images_readme/Rob2.PNG?raw=true "Free Trial Activation")
 2) Create a new "Project"  
+!["Create Project"](/images_readme/Rob1.PNG?raw=true "Create Project")
 3) Setup your project  
   Type "Models" in the search bar.
-  Click Models (Vision), and "ENABLE AUTOML AI"
+  Click Models (Vision), and "ENABLE AUTOML API"
+  !["Enable AutoML API"](/images_readme/Rob3.PNG?raw=true "Enable AutoML API")
   Click the "New Dataset" button.
+  !["New Dataset"](/images_readme/Rob4.PNG?raw=true "New Dataset")
   Select the Object Detection model, click "Create Dataset".
 4) Upload Images  
   Click "Select Files" and upload the dataset(all images) from your computer.
+  !["Upload Data"](/images_readme/Rob5.PNG?raw=true "Upload Data")
   You will need to specify the "Destination on Cloud Storage"
   Click the icon with the + sign to create a new bucket.
+  !["Create Bucket"](/images_readme/Rob6.PNG?raw=true "Create Bucket")
   Name your new bucket, and you can click through the rest of the settings.
   Create the bucket.
   Select the bucket.
@@ -52,6 +57,7 @@ Train Model Using Google Cloud
   Upload the CSV labels file to the bucket you just created.
   Return to the original page containing your Project Dataset.
   Click "Select a CSV file on Cloud Storage"
+  !["Select CSV"](/images_readme/Rob7.PNG?raw=true "Select CSV")
   Click the bucket you already created.
   Find and select the labels file you uploaded to your bucket.
 6) Start Training  
@@ -59,13 +65,16 @@ Train Model Using Google Cloud
   Switch to the "Train" tab
   "Train New Model"
   Name your model, choose to train an "Edge" Model
+  !["Edge Model"](/images_readme/Rob8.PNG?raw=true "Edge Model")
   Optimize your model for "Faster predictions"
+  !["Faster Predictions"](/images_readme/Rob9.PNG?raw=true "Faster Predictions")
   Set the recommended 24 hour node budget.
   Start Training
 7) Evaluate  
   After about 8 hours, your model will finish training. At this point, switch to the "Evaluate" tab. Here you can see how well your model does, looking at images of correctly or incorrectly classified models, or examining Precision and Recall.
   Once you have finished evaluating the model, switch to the "Test & Use" tab.
   Choose to export the model as a "TF Lite" model.
+  !["Export TFLite"](/images_readme/Rob10.PNG?raw=true "Export TFLite")
   Choose which bucket to export the model to. I recommend creating a new bucket named "frc_models" and uploading the trained model there. Then, return to the page that contains
   all of your buckets (https://console.cloud.google.com/storage/browser), navigate to the "frc_models" bucket and find the "model.tflite" file that is nested within several    folders. Download this model to your local machine.
 8) File format conversions  
