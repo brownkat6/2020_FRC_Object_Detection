@@ -79,11 +79,11 @@ Train Model Using Google Cloud
   all of your buckets (https://console.cloud.google.com/storage/browser), navigate to the "frc_models" bucket and find the "model.tflite" file that is nested within several    folders. Download this model to your local machine.
 8) File format conversions  
   Unfortunately, you cannot immediately run this trained model in FRC, as it is unoptimized and would be extremely slow. 
-  Open a command line.
+  Open a command line.   
   Linux Users   
     Follow the instructions here https://coral.ai/docs/edgetpu/compiler/#download to install the edge_tpu compiler.
     Navigate to the directory containing your model.tflite
-    $ edgetpu_compiler model.tflite
+    $ edgetpu_compiler model.tflite   
    Windows Users   
     The edge_tpu compiler does not run on Windows, but you can circumvent this by running a docker shell.
     Credit for this workaround to https://github.com/tomassams/docker-edgetpu-compiler
