@@ -32,9 +32,9 @@ Get New Labeled Data
 
 Train Model Using Google Cloud  
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.  
-!["Free Trial Activation"](/images_readme/Rob2.PNG?raw=true "Free Trial Activation")
+!["Free Trial Activation"](/images_readme/Rob1.PNG?raw=true "Free Trial Activation")
 2) Create a new "Project"  
-!["Create Project"](/images_readme/Rob1.PNG?raw=true "Create Project")
+!["Create Project"](/images_readme/Rob2.PNG?raw=true "Create Project")
 3) Setup your project  
   Type "Models" in the search bar.
   Click Models (Vision), and "ENABLE AUTOML API"
