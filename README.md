@@ -4,7 +4,7 @@ This repository is provides a pre-trained, ready to go object detection vision m
 If you simply want to get a pre-trained model that will output the location of Power Cells and Upper Power Ports, skip to "Run in FRC"
 If you want to retrain the model using a new/updated dataset, follow the steps starting in "Get New Labeled Data".
 
-Get New Labeled Data  
+## Get New Labeled Data  
   1) https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/setting-up-the-data.html
   Follow the instructions here. However, our team has labeled several hundred additonal images, so instead of using the Supervisely link provided by WPILib, use this link https://app.supervise.ly/share-links/vlZ5F1mj5N6qxB1Ud6KsI1N7QEJr5OPZ3LYkNyFdh946ZEHihPPWwP1VaYP6Ncwq when cloning the dataset.
   2) Label additional data using Supervisely.  
@@ -30,7 +30,7 @@ Get New Labeled Data
   This will create map.pbtxt in the current directory.
   7) You are now ready to "Train Model Using Google Cloud"
 
-Train Model Using Google Cloud  
+## Train Model Using Google Cloud  
 1) Create a Google Cloud account. https://console.cloud.google.com/getting-started This will give you a $300 free credit that you can use to train a model.  
 !["Free Trial Activation"](/images_readme/Rob1.PNG?raw=true "Free Trial Activation")   
 2) Create a new "Project"  
@@ -101,6 +101,6 @@ Train Model Using Google Cloud
   Almost There! You are now ready to move to the section "Run in FRC"
 
 
-Run in FRC  
+## Run in FRC  
   https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/inference.html
   Follow the instructions in this page using the model.tar.gz file. The python script inference.py that you will need to upload the model can be found in this repository.
