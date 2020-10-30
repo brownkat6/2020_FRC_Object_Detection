@@ -1,5 +1,5 @@
 # 2020_FRC_Object_Detection
-This repository provides a pre-trained, ready-to-go object detection vision model for the 2020 FRC FIRST Robotics season. The model outputs the location of Power Cells and Upper Power Ports given a camera input stream. FRC began the process of providing object detection capabilities in the 2019-2020 season, as shown here. https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/index.html Unfortunately, the platform they used to train the model, AWS, has permissions issues that as of September 2020 remain unresolved. Thus, this repository uses Google Cloud to train an object detection model. However, it will reference several of the steps outlined by FIRST (to get the original (mostly unlabeled) dataset, and to provide the inference.py script that is used to run the trained model on the RoboRio), and for those I take no credit.
+This repository provides a pre-trained, ready-to-go object detection vision model for the 2020 FRC FIRST Robotics season. The model outputs the location of Power Cells and Upper Power Ports given a camera input stream. FRC began the process of providing object detection capabilities in the 2019-2020 season, as shown here. https://docs.wpilib.org/en/latest/docs/software/examples-tutorials/machine-learning/index.html Unfortunately, the platform they used to train the model, AWS, has permissions issues that as of September 2020 remain unresolved. Thus, this repository uses Google Cloud to train an object detection model. However, it will reference several of the steps outlined by FIRST (to get the original--mostly unlabeled--dataset, and to provide the inference.py script that is used to run the trained model on the RoboRio), and for those I take no credit.
 
 If you simply want to get a pre-trained model that will output the location of Power Cells and Upper Power Ports, skip to "Run in FRC"
 If you want to retrain the model using a new/updated dataset, follow the steps starting in "Get New Labeled Data".
@@ -24,7 +24,7 @@ If you want to retrain the model using a new/updated dataset, follow the steps s
     This will move all of your images into the all_images folder. You may upload all of the images in this folder to your data bucket in Google Cloud.
   6) Create map.pbtxt  
     This file contains the labels for each object you are identifying.
-    You will need to generate a map.pbtxt file if your dataset contains new types of labeled objects(e.g. it also identifies the Lower Power Port).
+    You will need to generate a map.pbtxt file if your dataset contains new types of labeled objects (e.g. it also identifies the Lower Power Port).
     Open a command line. Navigate to this repository. Replace Object1_Name etc. with the labels of your objects. Ex. Power_Cell
     $ python generate_pbtxt.py --classes Object1_Name Object2_Name ObjectN_Name --current_dir path/to/current/directory
   This will create map.pbtxt in the current directory.
