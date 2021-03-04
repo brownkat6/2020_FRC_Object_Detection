@@ -12,12 +12,12 @@ If you want to retrain the model using a new/updated dataset, follow the steps s
   4) Move data into the input folder of this repository  
   Directory structure  
   -2020_FRC_Object_Detection  
-    -input  
-      -Raw Data  
-        -Filming Day 1 Images  
-        -Filming Day 1 Video  
-        -Filming Day 2 Video  
-      -all_images  
+  \t  -input  
+  \t    -Raw Data  
+  \t\t      -Filming Day 1 Images  
+  \t\t      -Filming Day 1 Video  
+  \t\t      -Filming Day 2 Video  
+  \t    -all_images  
   5) Format New Labeled Data  
     $ python generate_gcloud_labels.py --bucket_name data_bucket_name --current_dir path/to/repository/
     This will create a bucket_name_labels.csv file that you can upload to Google Cloud. These are your labels to tell the model where each object is in the image.
