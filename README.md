@@ -78,18 +78,18 @@ If you want to retrain the model using a new/updated dataset, follow the steps s
   Choose which bucket to export the model to. I recommend creating a new bucket named "frc_models" and uploading the trained model there. Then, return to the page that contains
   all of your buckets (https://console.cloud.google.com/storage/browser), navigate to the "frc_models" bucket and find the "model.tflite" file that is nested within several    folders. Download this model to your local machine.
 8) File format conversions  
-  Unfortunately, you cannot immediately run this trained model in FRC, as it is unoptimized and would be extremely slow. 
+  Unfortunately, you cannot immediately run this trained model in FRC, as it is unoptimized and would be extremely slow.  
   Open a command line.   
   Linux Users   
-    &emsp;Follow the instructions here https://coral.ai/docs/edgetpu/compiler/#download to install the edge_tpu compiler.
-    &emsp;Navigate to the directory containing your model.tflite
+    &emsp;Follow the instructions here https://coral.ai/docs/edgetpu/compiler/#download to install the edge_tpu compiler.  
+    &emsp;Navigate to the directory containing your model.tflite  
     &emsp;$ edgetpu_compiler model.tflite   
    Windows Users   
-    &emsp;The edge_tpu compiler does not run on Windows, but you can circumvent this by running a docker shell.
-    &emsp;Credit for this workaround to https://github.com/tomassams/docker-edgetpu-compiler
-    &emsp;Open WindowsPowerShell   
-    &emsp;$ docker build --tag edgetpu_compiler https://github.com/tomassams/docker-edgetpu-compiler.git   
-    &emsp;Navigate to the directory containing model.tflite   
+    &emsp;The edge_tpu compiler does not run on Windows, but you can circumvent this by running a docker shell.   
+    &emsp;Credit for this workaround to https://github.com/tomassams/docker-edgetpu-compiler   
+    &emsp;Open WindowsPowerShell    
+    &emsp;$ docker build --tag edgetpu_compiler https://github.com/tomassams/docker-edgetpu-compiler.git    
+    &emsp;Navigate to the directory containing model.tflite    
     &emsp;$ docker run -it --rm -v ${pwd}:/home/edgetpu edgetpu_compiler edgetpu_compiler model.tflite   
    At this point, your current directory should contain the compiled model_edgetpu.tflite directory along with a few other files. It may warn you that not all operations were compiled successfully, but you may ignore this warning.   
 9) Final File Organization  
